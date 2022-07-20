@@ -59,28 +59,26 @@
     <div id="helpTrigger" class="helpTrigger"></div>
     <div id="helpContent" style="display:none"></div>
 
+</div>
 
 
-    <script>
+<script>
 
-        $(document).ready(function () {
-                $.ajax({
-                    url: '@Url.Action("GetAdsSimple", "Home")',
-                    dataType: "json",
-                    type: "POST",
-                    success: function (result) {
-                        $("#test").append(result);
-                    },
-                    error: function (result) {
-                        console.log("Error");
-                    }
-                });
-         });
-
-        $(helpTrigger).one("click", getHelp)
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("GetAdsSimple", "Home")',
+            dataType: "json",
+            type: "POST",
+            success: function (result) {
+                $("#test").append(result);
+            }
+        });
+    });
 
 
-        function getHelp() {
+    $(helpTrigger).one("click",getHelp);
+
+    function getHelp() {
             $.ajax({
                 url: '@Url.Action("getHelp", "Home")',
                 dataType: "json",
@@ -95,16 +93,16 @@
             });
         }
 
-        function closeHelp() {
+    function closeHelp() {
             $("#helpContent").empty();
             $("#helpContent").hide();
             $("#helpTrigger").removeClass("closeTrigger").addClass("helpTrigger");
             $("#helpTrigger").off();
             $("#helpTrigger").click(getHelp);
-        }
-    </script>
 
-</div>
+        }
+</script>
+
 
 
 <div class="row">

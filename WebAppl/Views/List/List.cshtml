@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "List";
+}
+@model WebAppl.Models.ItineraryItem
+
+<script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>
+
+
+<h2>list</h2>
+
+<div id="Itinerary376">
+    <div class="span10">8/11/2014 10:10:55 PM</div> <div class="span15">Sample itinerary item7</div>
+    <div class="span5">45</div> <div class="span5 cancel"> Cancel</div>
+</div>
+<div id="Itinerary370">
+    <div class="span10">8/12/2014 10:10:55 PM</div> <div class="span15">Sample itinerary item1</div>
+    <div class="span5">20</div> <div class="span5 cancel"> Cancel</div>
+</div>
+<div id="Itinerary375">
+    <div class="span10">8/12/2014 10:49:59 PM</div> <div class="span15">Sample itinerary item6</div>
+    <div class="span5">30</div> <div class="span5 cancel"> Cancel</div>
+</div>
+<div id="Itinerary373">
+    <div class="span10">8/14/2014 12:41:18 AM</div> <div class="span15">Sample itinerary item4</div>
+    <div class="span5">60</div> <div class="span5 cancel"> Cancel</div>
+</div>
+<div id="Itinerary379">
+    <div class="span10">8/14/2014 10:43:55 PM</div> <div class="span15">Sample itinerary item10</div>
+    <div class="span5">10</div> <div class="span5 cancel"> Cancel</div>
+</div>
+
+<style>
+    .cancel {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+</style>
+
+<script>
+
+    $(".cancel").on("click", function () {
+        var id = ($(this).parent().attr("id"))
+            .replace("Itinerary", "");
+        var parent = $(this).parent();
+        $.ajax({
+            url: '@Url.Action("CancelItineraryItem", "List")',
+            dataType: "json",
+            type: "POST",
+            data: { id: id },
+            success: function (result) {
+                parent.hide();
+            }
+        });
+    });
+
+</script>

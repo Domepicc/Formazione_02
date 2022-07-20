@@ -22,6 +22,8 @@ namespace WebAppl.Controllers
             return View(model);
         }
 
+
+
         [HttpPost]
         public ActionResult Create(ItineraryItem data)
         {
@@ -31,6 +33,9 @@ namespace WebAppl.Controllers
             }
             return View();
         }
+
+        
+
 
         [HttpGet()]
         public JsonResult VerifyAvailability(DateTime When, string Description)
