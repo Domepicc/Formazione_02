@@ -16,12 +16,14 @@ namespace WepAPI.Controllers
 
         public IEnumerable<Post> Get()
         {
+
             return _repository.GetAll();
         }
 
    
         public Post Get(int id)
         {
+            Request.CreateResponse(HttpStatusCode.Found);
             return _repository.Get(id);
         }
 
@@ -34,8 +36,8 @@ namespace WepAPI.Controllers
 
         public HttpResponseMessage Delete(int id)
         {
-             _repository.Delete(id);
-             var response = Request.CreateResponse(HttpStatusCode.NoContent);
+            _repository.Delete(id);
+            var response = Request.CreateResponse(HttpStatusCode.NoContent);
             return response;
         }
 

@@ -18,7 +18,12 @@ namespace WebAPI.Domain
 
         public string Line { get; set; }
 
-        public virtual ICollection<ToolMachine> ToolMachine { get; set; }
+        public ICollection<ToolMachine> ToolMachine { get; set; }
+
+        public Machine()
+        {
+            ToolMachine = new List<ToolMachine>();
+        }
 
         public int CompareTo(Machine other)
         {

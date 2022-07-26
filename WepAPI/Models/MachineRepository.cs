@@ -49,7 +49,7 @@ namespace WebAPI.DataAccess
         {
             using(MyDBContext myDb = new MyDBContext())
             {
-                var result = myDb.Machines.Where(t => t.MachineCode == id).Include(x => x.ToolMachine).FirstOrDefault();
+                var result = myDb.Machines.Where(t => t.MachineCode.Equals(id)).Include(x => x.ToolMachine).FirstOrDefault();     
                 return result;
 
             }
@@ -70,20 +70,7 @@ namespace WebAPI.DataAccess
             throw new NotImplementedException();
         }
 
-        public List<string> ReadMachineCodeExcepted (string id)
-        {
-            using(MyDBContext myDb =new MyDBContext())
-            {
-                List<string> idMachines = new List<string>();
-                var tool = myDb.Tools.Where(t => t.IdTool.Equals(id)).Include(x => x.ToolMachine).FirstOrDefault();
 
-                foreach (ToolMachine t in tool.ToolMachine)
-                {
-                    idMachines.Add(t.MachineCode);
-                }
-                return myDb.Machines.Select(m => m.MachineCode).Except(idMachines).ToList(); 
-            }
-        }
 
 
         public List<string> ReadMachineCode()

@@ -37,10 +37,6 @@ namespace WepAPI.Controllers
 
         }
 
-        public bool Put (Turret item)
-        {
-            TurretsRepository repo = new TurretsRepository();
-            return repo.Update(item, item.TurretCode);
-        }
+
     }
 }

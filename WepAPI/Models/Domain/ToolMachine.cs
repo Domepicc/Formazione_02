@@ -16,9 +16,9 @@ namespace WebAPI.Domain
         [Key, Column(Order = 2)]
         public string MachineCode { get; set; }
 
-        public Tool Tool { get; set; }
+        //public Tool Tool { get; set; }
 
-        public Machine Machine { get; set; }
+        //public Machine Machine { get; set; }
 
 
         public ToolMachine(string id, string id2)

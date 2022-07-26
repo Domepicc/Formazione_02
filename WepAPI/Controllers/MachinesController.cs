@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using WebAPI.Domain;
@@ -9,7 +8,7 @@ using WebAPI.DataAccess;
 
 namespace WepAPI.Controllers
 {
-    public class MachineController : ApiController
+    public class MachinesController : ApiController
     {
         // GET: Machine
 
@@ -24,6 +23,8 @@ namespace WepAPI.Controllers
             MachineRepository repo = new MachineRepository();
             return repo.ReadById(id);
         }
+
+
 
     }
 }

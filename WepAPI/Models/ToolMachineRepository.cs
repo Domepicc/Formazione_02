@@ -21,8 +21,11 @@ namespace WebAPI.DataAccess
 
         public bool Insert(ToolMachine item)
         {
-            throw new NotImplementedException();
-
+            using (MyDBContext mydb = new MyDBContext())
+            {
+                mydb.ToolMachine.Add(item);
+                return mydb.SaveChanges() > 0;
+            }
         }
 
         public List<ToolMachine> ReadAll()

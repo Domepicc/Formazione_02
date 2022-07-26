@@ -32,6 +32,21 @@ namespace WebAPI.DataAccess
             }
         }
 
+        public List<string> ReadMachinesCodeExcepted(string id)
+        {
+            using (MyDBContext myDb = new MyDBContext())
+            {
+                List<string> idMachines = new List<string>();
+                var tool = myDb.Tools.Where(t => t.IdTool.Equals(id)).Include(x => x.ToolMachine).FirstOrDefault();
+
+                foreach (ToolMachine t in tool.ToolMachine)
+                {
+                    idMachines.Add(t.MachineCode);
+                }
+                return myDb.Machines.Select(m => m.MachineCode).Except(idMachines).ToList();
+            }
+        }
+
         public Tool ReadById( string id)
         {
             using (MyDBContext myDb= new MyDBContext())
@@ -77,7 +92,11 @@ namespace WebAPI.DataAccess
 
         public bool Insert(Tool item)
         {
-            throw new NotImplementedException();
+            using (MyDBContext myDb = new MyDBContext())
+            {
+                myDb.Tools.Add(item);
+                return myDb.SaveChanges() > 0;
+            }
         }
 
         public bool Update(Tool item, string id)

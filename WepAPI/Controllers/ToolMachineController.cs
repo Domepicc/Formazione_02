@@ -27,5 +27,13 @@ namespace WepAPI.Controllers
             ToolMachineRepository repo = new ToolMachineRepository();
             return repo.ReadById(id);
         }
+
+        public bool Post (ToolMachine item)
+        {
+            ToolMachineRepository repo = new ToolMachineRepository();
+            return repo.Insert(item);
+        }
+
+
     }
 }

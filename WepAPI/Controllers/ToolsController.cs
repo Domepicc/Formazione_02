@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using WebAPI.Domain;
 using WebAPI.DataAccess;
 using System.Web.Http;
+using System.Net.Http;
+using System.Net;
 
 namespace WepAPI.Controllers
 {
@@ -13,12 +15,6 @@ namespace WepAPI.Controllers
     {
         // GET: Tools
 
-
-        //public List<Tool> Get()
-        //{
-        //    ToolsRepository repo = new ToolsRepository();
-        //    return repo.ReadAll();
-        //}
 
         public List<Tool> Get()
         {
@@ -32,10 +28,32 @@ namespace WepAPI.Controllers
             return repo.ReadById(id);
         }
 
-        public bool Put(Tool item)
+        public bool Post(Tool item)
         {
             ToolsRepository repo = new ToolsRepository();
+            return repo.Insert(item);
+        }
+
+        public bool Put(Tool item)
+        {
+
+            ToolsRepository repo = new ToolsRepository();
             return repo.Update(item, item.IdTool);
+        }
+
+        [System.Web.Http.Route("api/Tools/{id}/CodeExcepted")]
+        public List<string> GetMachineCodeExcepted(string id)
+        {
+            ToolsRepository repo = new ToolsRepository();
+            return repo.ReadMachinesCodeExcepted(id);
+        }
+
+        [System.Web.Http.Route("api/Tools/ByPartialId/{id}")]
+        public List<Tool> GetByPartialId (string id)
+        {
+            ToolsRepository repo = new ToolsRepository();
+            return repo.ReadByPartialId(id);
+
         }
     }
 }

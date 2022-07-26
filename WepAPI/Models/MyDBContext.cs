@@ -47,14 +47,14 @@ namespace WebAPI.DataAccess
             modelBuilder.Entity<ToolMachine>()
                 .Property(t => t.MachineCode)
                 .HasMaxLength(50);
-            modelBuilder.Entity<ToolMachine>()
-                .HasRequired(tm => tm.Tool)
-                .WithMany(t => t.ToolMachine)
-                .HasForeignKey(tm => tm.IdTool);
-            modelBuilder.Entity<ToolMachine>()
-                .HasRequired(tm => tm.Machine)
-                .WithMany(t => t.ToolMachine)
-                .HasForeignKey(tm => tm.MachineCode);
+            //modelBuilder.Entity<ToolMachine>()
+            //    .HasRequired(tm => tm.Tool)
+            //    .WithMany(t => t.ToolMachine)
+            //    .HasForeignKey(tm => tm.IdTool);
+            //modelBuilder.Entity<ToolMachine>()
+            //    .HasRequired(tm => tm.Machine)
+            //    .WithMany(t => t.ToolMachine)
+            //    .HasForeignKey(tm => tm.MachineCode);
 
 
             modelBuilder.Entity<Machine>()
@@ -63,15 +63,11 @@ namespace WebAPI.DataAccess
                 .Property(m => m.MachineCode)
                 .HasMaxLength(50);
             modelBuilder.Entity<Machine>()
-                .Property(m => m.Description)
-                .HasMaxLength(50)
-                .IsRequired();
+                .Property(m => m.Description);
             modelBuilder.Entity<Machine>()
-                .Property(m => m.StoreToolsFileName)
-                .HasMaxLength(250);
+                .Property(m => m.StoreToolsFileName);
             modelBuilder.Entity<Machine>()
-                .Property(m => m.Line)
-                .HasMaxLength(50);
+                .Property(m => m.Line);
 
             modelBuilder.Entity<Tool>()
                 .HasKey(t => t.IdTool);
