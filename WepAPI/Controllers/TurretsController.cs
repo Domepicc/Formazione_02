@@ -12,27 +12,25 @@ namespace WepAPI.Controllers
     public class TurretsController : ApiController
     {
 
+        private TurretsRepository repo = new TurretsRepository();
+
         public List<Turret> Get()
         {
-            TurretsRepository repo = new TurretsRepository();
             return repo.ReadAll();
         }
 
         public Turret Get(string id)
         {
-            TurretsRepository repo = new TurretsRepository();
             return repo.ReadById(id);
         }
 
         public bool Delete(string id)
         {
-            TurretsRepository repo = new TurretsRepository();
             return repo.Delete(id);
         }
 
         public bool Post (Turret item)
         {
-            TurretsRepository repo = new TurretsRepository();
             return repo.Insert(item);
 
         }

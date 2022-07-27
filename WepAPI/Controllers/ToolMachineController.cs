@@ -13,24 +13,21 @@ namespace WepAPI.Controllers
 {
     public class ToolMachineController : ApiController
     {
-        // GET: ToolMachine
-
+        
+        private ToolMachineRepository repo = new ToolMachineRepository();
 
         public List<ToolMachine> Get()
         {
-            ToolMachineRepository repo = new ToolMachineRepository();
             return repo.ReadAll();       
         }
 
         public ToolMachine Get(string id)
         {
-            ToolMachineRepository repo = new ToolMachineRepository();
             return repo.ReadById(id);
         }
 
         public bool Post (ToolMachine item)
         {
-            ToolMachineRepository repo = new ToolMachineRepository();
             return repo.Insert(item);
         }
 

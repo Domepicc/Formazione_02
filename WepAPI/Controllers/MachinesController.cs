@@ -10,17 +10,16 @@ namespace WepAPI.Controllers
 {
     public class MachinesController : ApiController
     {
-        // GET: Machine
+
+        private MachineRepository repo = new MachineRepository();
 
         public List<Machine> Get()
         {
-            MachineRepository repo = new MachineRepository();
             return repo.ReadAll();
         }
 
         public Machine Get(string id)
         {
-            MachineRepository repo = new MachineRepository();
             return repo.ReadById(id);
         }
 
